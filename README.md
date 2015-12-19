@@ -29,3 +29,8 @@ Windows users need to install
 [NumPy](http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy) and
 [Python-igraph](http://www.lfd.uci.edu/~gohlke/pythonlibs/#python-igraph) from
 Christoph Gohlke's Windows Binaries: http://www.lfd.uci.edu/~gohlke/pythonlibs
+
+## Neo4j Authentication
+
+If your Neo4j database is password-protected, replace "neo4j"/"password" with
+your Neo4j username/password in scripts/twitter.py and the iPython notebooks.

@@ -4,8 +4,15 @@ import sys
 import time
 import requests
 from py2neo import Graph, Relationship, authenticate
+from py2neo.error import Unauthorized
 
 graph = Graph()
+
+try:
+    graph.delete_all()
+except Unauthorized:
+    authenticate('localhost:7474', 'neo4j', 'password')
+    graph.delete_all()
 
 graph.cypher.execute("CREATE CONSTRAINT ON (u:User) ASSERT u.username IS UNIQUE")
 graph.cypher.execute("CREATE CONSTRAINT ON (t:Tweet) ASSERT t.id IS UNIQUE")
