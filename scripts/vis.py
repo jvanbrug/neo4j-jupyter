@@ -1,6 +1,7 @@
 from IPython.display import IFrame
 import json
 import os
+import sys
 import uuid
 
 def vis_network(nodes, edges, physics=False):
@@ -93,8 +94,9 @@ def draw(graph, options, physics=False, limit=100):
         title = {}
 
         for key, value in node.properties.items():
-            key = key.encode("utf8")
-            value = value.encode("utf8") if type(value) is unicode else value
+            if sys.version_info <= (3, 0):
+                key = key.encode("utf8")
+                value = value.encode("utf8")
 
             title[key] = value
 
