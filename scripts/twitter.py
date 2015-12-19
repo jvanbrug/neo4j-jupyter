@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import sys
 import time
@@ -77,17 +78,17 @@ while True:
         tweets = find_tweets(since_id=since_id)
 
         if not tweets:
-            print "No tweets found."
+            print("No tweets found.")
             time.sleep(60)
             continue
 
         since_id = tweets[0].get('id')
         upload_tweets(tweets)
 
-        print str(len(tweets)) +  " tweets uploaded!"
+        print(len(tweets), 'tweets uploaded!')
         time.sleep(60)
 
     except Exception as e:
-        print e
+        print(e)
         time.sleep(60)
         continue
