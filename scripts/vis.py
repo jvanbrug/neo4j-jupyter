@@ -1,5 +1,6 @@
 from IPython.display import IFrame
 import json
+import os
 import uuid
 
 def vis_network(nodes, edges, physics=False):
@@ -60,9 +61,9 @@ def vis_network(nodes, edges, physics=False):
     
     filename = "figure/graph-{}.html".format(unique_id)
 
-    file = open(filename, "w")
-    file.write(html)
-    file.close()
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    with open(filename, 'w') as network_file:
+        network_file.write(html)
 
     return IFrame(filename, width="100%", height="400")
 
